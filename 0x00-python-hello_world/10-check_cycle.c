@@ -1,10 +1,10 @@
 #include "lists.h"
-
 #include <stdlib.h>
+
 /**
- * check_cycle - Finds the loop in a linked list.
- * @list: Pointer to list.
- * Return: 1 if loop found, or 0 if there is no loop.
+ * check_cycle - checks for cycle in a linked list
+ * @list: linked list to check
+ * Return: 1 if cycle, 0 if not
  */
 int check_cycle(listint_t *list)
 {
