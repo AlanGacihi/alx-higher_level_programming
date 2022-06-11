@@ -9,7 +9,7 @@
 int is_palindrome(listint_t **head)
 {
 	listint_t *current;
-	int i, j, N[1000];
+	int i, j, N[10000];
 
 	if (!head || !*head)
 		return (1);
