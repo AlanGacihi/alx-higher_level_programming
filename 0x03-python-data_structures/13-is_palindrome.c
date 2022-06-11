@@ -2,7 +2,8 @@
 
 /**
  * is_palindrome - Checks if a linked list is a palindrome.
- * @head: Double pointer to the first element on the list.
+ * @head: Double pointer to the first node on the list.
+ *
  * Return: 1 if list is palindrome, 0 if not.
  */
 int is_palindrome(listint_t **head)
@@ -15,7 +16,7 @@ int is_palindrome(listint_t **head)
 
 	i = 0;
 	current = *head;
-	while (current->next)
+	while(current)
 	{
 		N[i++] = current->n;
 		current = current->next;
