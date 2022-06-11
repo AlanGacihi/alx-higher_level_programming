@@ -22,7 +22,7 @@ int is_palindrome(listint_t **head)
 	}
 
 	for (j = 0; j < i; j++, i--)
-		if (N[i] != N[i - 1])
+		if (N[j] != N[i - 1])
 			return (0);
 	return (1);
 }
