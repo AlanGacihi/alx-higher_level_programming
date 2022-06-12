@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <Python.h>
+
 void print_python_bytes(PyObject *p);
 /**
  * print_python_list - Prints info about Python lists.
@@ -20,13 +21,14 @@ void print_python_list(PyObject *p)
 	}
 
 }
+
 /**
- * print_python_bytes - Prints info about Python Bytes.
+ * print_python_bytes - Prints info about Python bytes.
  * @p: Python object.
  */
 void print_python_bytes(PyObject *p)
 {
-	int bytes_to_show, i;
+	int bytes, i;
 
 	puts("[.] bytes object info");
 	if (!PyBytes_Check(p))
@@ -38,14 +40,12 @@ void print_python_bytes(PyObject *p)
 	if (PyBytes_Size(p) > 0)
 	{
 		printf("  trying string: %s\n", PyBytes_AsString(p));
-		bytes_to_show = PyBytes_Size(p) + 1;
-		if (bytes_to_show > 10)
-			bytes_to_show = 10;
-		printf("  first %d bytes:", bytes_to_show);
-		for (i = 0; i < bytes_to_show; i++)
-		{
+		bytes = PyBytes_Size(p) + 1;
+		if (bytes > 10)
+			bytes = 10;
+		printf("  first %d bytes:", bytes);
+		for (i = 0; i < bytes; i++)
 			printf(" %02x", (unsigned char)*(PyBytes_AsString(p) + i));
-		}
 		puts("");
 	}
 }
