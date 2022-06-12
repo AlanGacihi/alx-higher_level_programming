@@ -12,9 +12,9 @@ def roman_to_int(roman_string):
     i = 0
 
     while(i < len(roman_string)):
-        if roman_string[i] == "I" and i != len(roman_string) - 1:
-            if roman_string[i + 1] != "I":
-                n += conv[roman_string[i + 1]] - 1
+        if i != len(roman_string) - 1:
+            if conv[roman_string[i + 1]] > conv[roman_string[i]]:
+                n += conv[roman_string[i + 1]] - conv[roman_string[i]]
                 i += 2
             else:
                 n += conv[roman_string[i]]
