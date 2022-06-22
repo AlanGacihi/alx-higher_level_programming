@@ -1,6 +1,16 @@
 #!/usr/bin/python3
+
+"""Singly-linked list"""
+
+
 class Node:
+    """Define a node"""
     def __init__(self, data, next_node=None):
+        """Initialize a new Node.
+        Args:
+        data (int): The data of the new Node.
+        next_node (Node): The next node of the new Node.
+        """
         if type(data) is not int:
             raise TypeError("data must be an integer")
         self.__data = data
@@ -30,7 +40,10 @@ class Node:
 
 
 class SinglyLinkedList:
+    """Define a singly-linked list"""
+
     def __init__(self):
+        """Initalize a new SinglyLinkedList."""
         self.__head = None
 
     def sorted_insert(self, value):
