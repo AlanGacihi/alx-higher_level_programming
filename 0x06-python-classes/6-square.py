@@ -2,6 +2,7 @@
 
 """Square"""
 
+
 class Square:
     """Define a square"""
 
