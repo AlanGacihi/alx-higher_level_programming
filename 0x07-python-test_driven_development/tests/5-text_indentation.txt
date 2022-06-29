@@ -1,0 +1,28 @@
+>>> a = __import__("5-text_indentation")
+>>> a.text_indentation("Hello. I'm Darwin")
+Hello.
+<BLANKLINE>
+I'm Darwin
+>>> a.text_indentation(345)
+Traceback (most recent call last):
+TypeError: text must be a string
+>>> a.text_indentation()
+Traceback (most recent call last):
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+>>> a.text_indentation(345, 3242)
+Traceback (most recent call last):
+TypeError: text_indentation() takes 1 positional argument but 2 were given
+>>> a.text_indentation("")
+
+>>> a.text_indentation("      ")
+
+>>> a.text_indentation("        .")
+.
+<BLANKLINE>
+>>> a.text_indentation("    H  I   :   H.I.  ")
+H  I   :
+<BLANKLINE>
+H.
+<BLANKLINE>
+I.
+<BLANKLINE>

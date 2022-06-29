@@ -1,0 +1,18 @@
+>>> a = __import__("4-print_square")
+>>> a.print_square(2)
+##
+##
+>>> a.print_square("sd")
+Traceback (most recent call last):
+TypeError: size must be an integer
+>>> a.print_square(-1)
+Traceback (most recent call last):
+ValueError: size must be >= 0
+>>> a.print_square(0)
+<BLANKLINE>
+>>> a.print_square()
+Traceback (most recent call last):
+TypeError: print_square() missing 1 required positional argument: 'size'
+>>> a.print_square(0, 4)
+Traceback (most recent call last):
+TypeError: print_square() takes 1 positional argument but 2 were given

@@ -1,0 +1,24 @@
+>>> a = __import__("101-lazy_matrix_mul")
+>>> print(a.lazy_matrix_mul([[1, 2]], [[1, 1], [2, 1]]))
+[[5 3]]
+>>> a.lazy_matrix_mul()
+Traceback (most recent call last):
+TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+>>> a.lazy_matrix_mul([3, 2, 1], [2, 5])
+Traceback (most recent call last):
+ValueError: objects are not aligned
+>>> a.lazy_matrix_mul([[3, 2, 1], [1, 2, 3]], [2, 5])
+Traceback (most recent call last):
+ValueError: objects are not aligned
+>>> a.lazy_matrix_mul([[]], [[5],[3]])
+Traceback (most recent call last):
+ValueError: matrices are not aligned
+>>> a.lazy_matrix_mul([[5, 2, 1], ["sad", 3, 4]], [[5], [3]])
+Traceback (most recent call last):
+ValueError: objects are not aligned
+>>> a.lazy_matrix_mul([[5] [3]], [[5, 2, 1], ["sad", 3, 4]])
+Traceback (most recent call last):
+IndexError: list index out of range
+>>> a.lazy_matrix_mul([[2],[3]], [[2, 3], [3, 4]])
+Traceback (most recent call last):
+ValueError: objects are not aligned

@@ -1,0 +1,40 @@
+>>> a = __import__("0-add_integer")
+>>> a.add_integer(5, 2)
+7
+>>> a.add_integer(56.7, 2)
+58
+>>> a.add_integer(5, 24.2)
+29
+>>> a.add_integer()
+Traceback (most recent call last):
+TypeError: add_integer() missing 1 required positional argument: 'a'
+>>> a.add_integer(5)
+103
+>>> a.add_integer("sdsa")
+Traceback (most recent call last):
+TypeError: a must be an integer
+>>> a.add_integer(5, None)
+Traceback (most recent call last):
+TypeError: b must be an integer
+>>> a.add_integer(34, 54, 67)
+Traceback (most recent call last):
+TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+>>> a.add_integer(2.5, 3.7)
+5
+>>> a.add_integer(3.7)
+101
+>>> a.add_integer([1, 2, 3])
+Traceback (most recent call last):
+TypeError: a must be an integer
+>>> a.add_integer((1, 2, 3))
+Traceback (most recent call last):
+TypeError: a must be an integer
+>>> a.add_integer({"a": 1, "b": 2, "c": 3})
+Traceback (most recent call last):
+TypeError: a must be an integer
+>>> a.add_integer(None)
+Traceback (most recent call last):
+TypeError: a must be an integer
+>>> a.add_integer(float('inf'))
+Traceback (most recent call last):
+OverflowError: Number too large
