@@ -1,0 +1,38 @@
+>>> a = __import__("1-my_list")
+>>> my_list = a.MyList()
+>>> my_list.append(1)
+>>> my_list.append(4)
+>>> my_list.append(2)
+>>> my_list.append(3)
+>>> my_list.append(5)
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
+>>> print(my_list)
+[1, 4, 2, 3, 5]
+>>> l2 = a.MyList(5)
+Traceback (most recent call last):
+TypeError: 'int' object is not iterable
+>>> l = a.MyList(3, 4)
+Traceback (most recent call last):
+TypeError: list() takes at most 1 argument (2 given)
+>>> my_list.print_sorted(5)
+Traceback (most recent call last):
+TypeError: print_sorted() takes 1 positional argument but 2 were given
+>>> l = a.MyList()
+>>> l.print_sorted()
+[]
+>>> l2 = a.MyList(None)
+Traceback (most recent call last):
+TypeError: 'NoneType' object is not iterable
+>>> l2 = a.MyList(2.5)
+Traceback (most recent call last):
+TypeError: 'float' object is not iterable
+>>> isinstance(l, a.MyList)
+True
+>>> my_list = a.MyList(range(3))
+>>> my_list.append(-10)
+>>> my_list.print_sorted()
+[-10, 0, 1, 2]
+>>> my_list = a.MyList(True)
+Traceback (most recent call last):
+TypeError: 'bool' object is not iterable
