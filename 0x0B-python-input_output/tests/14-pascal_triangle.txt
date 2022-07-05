@@ -1,0 +1,13 @@
+>>> pascal_triangle = __import__("14-pascal_triangle").pascal_triangle
+>>> print(pascal_triangle(1))
+[[1]]
+>>> print(pascal_triangle(0))
+[]
+>>> print(pascal_triangle(-4))
+[]
+>>> print(pascal_triangle())
+Traceback (most recent call last):
+TypeError: pascal_triangle() missing 1 required positional argument: 'n'
+>>> print(pascal_triangle(3, 4))
+Traceback (most recent call last):
+TypeError: pascal_triangle() takes 1 positional argument but 2 were given
