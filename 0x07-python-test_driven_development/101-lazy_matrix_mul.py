@@ -8,7 +8,7 @@ Example:
     Should return [[5, 3]]
 """
 
-import numpy
+import numpy as np
 
 
 def lazy_matrix_mul(m_a, m_b):
@@ -23,4 +23,4 @@ def lazy_matrix_mul(m_a, m_b):
 
     """
 
-    return numpy.matrix(m_a) * numpy.matrix(m_b)
+    return (np.matmul(m_a, m_b))
