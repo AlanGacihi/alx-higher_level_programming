@@ -3,6 +3,7 @@
 Unittest for the class Rectangle.
 """
 import unittest
+import os
 from io import StringIO
 from contextlib import redirect_stdout
 from models.rectangle import Rectangle
@@ -249,3 +250,38 @@ class TestBase(unittest.TestCase):
         r1 = Rectangle(2, 1)
         with self.assertRaises(TypeError):
             r1.to_dictionary(1)
+
+    def test_create(self):
+        """ Test create"""
+        r1 = Rectangle.create(**{'id': 89})
+        r2 = Rectangle(1, 1, 0, 0, 89)
+        self.assertEqual(r1.id, r2.id)
+
+        r3 = Rectangle.create(**{'id': 89, 'width': 1})
+        r4 = Rectangle(1, 1, 0, 0, 89)
+        self.assertEqual(r3.width, r4.width)
+
+        r5 = Rectangle.create(**{'id': 89, 'width': 1, 'height': 2})
+        r6 = Rectangle(1, 2, 0, 0, 89)
+        self.assertEqual(r5.height, r6.height)
+
+        r7 = Rectangle.create(**{'id': 89, 'width': 1, 'height': 2, 'x': 3})
+        r8 = Rectangle(1, 2, 3, 0, 89)
+        self.assertEqual(r8.x, r7.x)
+
+        r9 = Rectangle.create(**{'id': 89, 'width': 1, 'height': 2,
+                              'x': 3, 'y': 4})
+        r10 = Rectangle(1, 2, 3, 4, 89)
+        self.assertEqual(r9.y, r10.y)
+
+    def test_save_to_file(self):
+        """ Test save to file. """
+        if os.path.isfile("Rectangle.json"):
+            os.remove("Rectangle.json")
+        Rectangle.save_to_file(None)
+        self.assertTrue(os.path.isfile("Rectangle.json"))
+
+        if os.path.isfile("Rectangle.json"):
+            os.remove("Rectangle.json")
+        Rectangle.save_to_file([Rectangle(1, 2)])
+        self.assertTrue(os.path.isfile("Rectangle.json"))
