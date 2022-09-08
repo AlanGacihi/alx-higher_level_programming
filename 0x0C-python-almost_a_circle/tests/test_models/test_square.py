@@ -1,8 +1,10 @@
 #!/usr/bin/python3
+
 """
 Unittest for the class square.
 """
 import unittest
+import os
 from models.square import Square
 
 
@@ -88,7 +90,7 @@ class TestSquare(unittest.TestCase):
     def test_wrong_type_y(self):
         """ Test for a wrong type for y. """
         with self.assertRaises(TypeError):
-            s1 = Square(10, "nope")
+            s1 = Square(1, 2, "nope")
 
     def test_size_neg(self):
         """ Test for a negative size. """
@@ -110,3 +112,46 @@ class TestSquare(unittest.TestCase):
         s1 = Square(2)
         with self.assertRaises(TypeError):
             s1.to_dictionary(1)
+
+    def test_create(self):
+        """ Test create"""
+        s1 = Square.create(**{'id': 89})
+        s2 = Square(1, 0, 0, 89)
+        self.assertEqual(s1.id, s2.id)
+
+        s3 = Square.create(**{'id': 89, 'size': 1})
+        s4 = Square(1, 0, 0, 89)
+        self.assertEqual(s3.size, s4.size)
+
+        s5 = Square.create(**{'id': 89, 'size': 1, 'x': 2})
+        s6 = Square(1, 2, 0, 89)
+        self.assertEqual(s5.x, s6.x)
+
+        s7 = Square.create(**{'id': 89, 'size': 1, 'x': 2, 'y': 3})
+        s8 = Square(1, 2, 3, 89)
+        self.assertEqual(s8.y, s8.y)
+
+    def test_save_to_file(self):
+        """ Test save to file. """
+        if os.path.isfile("Square.json"):
+            os.remove("Square.json")
+        Square.save_to_file(None)
+        self.assertTrue(os.path.isfile("Square.json"))
+
+        if os.path.isfile("Rectangle.json"):
+            os.remove("Rectangle.json")
+        Square.save_to_file([])
+        self.assertTrue(os.path.isfile("Square.json"))
+
+        if os.path.isfile("Square.json"):
+            os.remove("Square.json")
+        Square.save_to_file([Square(1)])
+        self.assertTrue(os.path.isfile("Square.json"))
+
+    def test_load_from_file(self):
+        """ Test load from file"""
+        if not os.path.isfile("Rectangle.json"):
+            self.assertEqual(Square.load_from_file(), [])
+        else:
+            objects = Square.load_from_file()
+            self.assertEqual(type(objects), list)
