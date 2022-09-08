@@ -138,8 +138,8 @@ class TestSquare(unittest.TestCase):
         Square.save_to_file(None)
         self.assertTrue(os.path.isfile("Square.json"))
 
-        if os.path.isfile("Rectangle.json"):
-            os.remove("Rectangle.json")
+        if os.path.isfile("Square.json"):
+            os.remove("Square.json")
         Square.save_to_file([])
         self.assertTrue(os.path.isfile("Square.json"))
 
@@ -150,8 +150,9 @@ class TestSquare(unittest.TestCase):
 
     def test_load_from_file(self):
         """ Test load from file"""
-        if not os.path.isfile("Rectangle.json"):
+        if not os.path.isfile("Square.json"):
             self.assertEqual(Square.load_from_file(), [])
         else:
             objects = Square.load_from_file()
-            self.assertEqual(type(objects), list)
+            for obj in objects:
+                self.assertIsInstance(obj, Square)

@@ -292,4 +292,5 @@ class TestBase(unittest.TestCase):
             self.assertEqual(Rectangle.load_from_file(), [])
         else:
             objects = Rectangle.load_from_file()
-            self.assertEqual(type(objects), list)
+            for obj in objects:
+                self.assertIsInstance(obj, Rectangle)
