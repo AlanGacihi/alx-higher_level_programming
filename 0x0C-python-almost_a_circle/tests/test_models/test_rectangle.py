@@ -193,6 +193,18 @@ class TestBase(unittest.TestCase):
             r1.display()
             self.assertEqual(outr1.getvalue(), "\n ##\n ##\n ##\n")
 
+        r1 = Rectangle(2, 2)
+        outr1 = StringIO()
+        with redirect_stdout(outr1):
+            r1.display()
+            self.assertEqual(outr1.getvalue(), "##\n##\n")
+
+        r1 = Rectangle(2, 2, 1)
+        outr1 = StringIO()
+        with redirect_stdout(outr1):
+            r1.display()
+            self.assertEqual(outr1.getvalue(), " ##\n ##\n")
+
     def test_str_rep(self):
         """ Test for string representation of a rectangle. """
         r1 = Rectangle(3, 5, 1, 2, 45)
