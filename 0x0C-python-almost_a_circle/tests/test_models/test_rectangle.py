@@ -285,3 +285,11 @@ class TestBase(unittest.TestCase):
             os.remove("Rectangle.json")
         Rectangle.save_to_file([Rectangle(1, 2)])
         self.assertTrue(os.path.isfile("Rectangle.json"))
+
+    def test_load_from_file(self):
+        """ Test load from file"""
+        if not os.path.isfile("Rectangle.json"):
+            self.assertEqual(Rectangle.load_from_file(), [])
+        else:
+            objects = Rectangle.load_from_file()
+            self.assertEqual(type(objects), list)
