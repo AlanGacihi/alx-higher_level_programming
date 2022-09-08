@@ -75,6 +75,14 @@ class TestBase(unittest.TestCase):
         r1.save_to_file_csv([])
         self.assertTrue(os.path.isfile("Rectangle.csv"))
 
+    def test_from_json_string(self):
+        """Test the from_json_string with empty staring and None."""
+        r1 = Rectangle(1, 1)
+        self.assertEqual(r1.from_json_string(""), [])
+        self.assertEqual(r1.from_json_string(None), [])
+        self.assertEqual(r1.from_json_string("[]"), [])
+        self.assertEqual(r1.from_json_string('[{ "id": 89 }]'), [{"id": 89}])
+
     def test_pep8_conformance(self):
         """ Test for PEP8 ok. """
         pep8style = pep8.StyleGuide(quiet=True)
