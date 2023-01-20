@@ -1,13 +1,16 @@
 #!/usr/bin/node
+// Characters of a Star Wars movie
 const request = require('request');
-request('https://swapi.co/api/films/' + process.argv[2], function (err, res, body) {
-  if (err) console.log(err);
+const url = `https://swapi-api.hbtn.io/api/films/${process.argv[2]}`;
+request(url, 'utf8', (error, response, body) => {
+  if (error) throw error;
   else {
-    const characters = JSON.parse(body).characters;
-    for (const character of characters) {
-      request(character, function (err, res, body) {
-        if (err) console.log(err);
-        else console.log(JSON.parse(body).name);
+    for (const t of JSON.parse(body).characters) {
+      request(t, 'utf8', (error, response, body) => {
+        if (error) throw error;
+        else {
+          console.log(JSON.parse(body).name);
+        }
       });
     }
   }
